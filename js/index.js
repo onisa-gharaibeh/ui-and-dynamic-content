@@ -1,3 +1,5 @@
+let form = document.querySelector('form');
+
 // Save the reference to text-field into a variable. | <input type="text">
 let input = document.getElementById('inpt');
 
@@ -11,37 +13,51 @@ let list = document.querySelector('.items');
 let feedback = document.querySelector('.errors');
 
 // Start function addItem.
-function addItem() {
-    // Create list-item and store output in a variable.
-    let item = document.createElement('li');
+function addItem(event) {
+   
+   event.preventDefault();
+   // Create list-item and store output in a variable.
+   let item = document.createElement('li');
 
-    // Check if user entered the value in input text-field.
-    // If so:
-    if (input.value !== '') {
-       // Use textContent property on created list-item
-       // and assign it with the value of the text written in the text-field
-       item.textContent = input.value.trim();
+   // Check if user entered the value in input text-field.
+   // If so:
+   if (input.value) {
 
-       // Append list item to unordered list.
-        list.appendChild(item);
+      // Use textContent property on created list-item
+      // and assign it with the value of the text written in the text-field
+      item.textContent = input.value.trim();
 
-       // Clear a feedback-message.
-       feedback.textContent = '';
+      // Append list item to unordered list.
+      list.appendChild(item);
 
-       // Clear the text-field.
-       input.value = '';
+      // Clear a feedback-message.
+      feedback.textContent = '';
 
-       // Put the cursor back to text-field
-        input.focus();
+      // Clear the text-field.
+      input.value = '';
 
-    // End if.
-    } else { 
-    // Otherwise:
-       // Print the message nothing entered in the paragraph "feedback"
-       feedback.textContent = 'You have not entered a thing yet!!'; 
-    // End otherwise.
-    }
-// End function addItem.
+      // Put the cursor back to text-field
+      input.focus();
+
+      // End if.
+   } else {
+      // Otherwise:
+      // Print the message nothing entered in the paragraph "feedback"
+      feedback.textContent = 'Nothing has been entered!!';
+
+      input.focus();
+      // End otherwise.
+   }
+
+   item.addEventListener('click', function () {
+      item.classList.add('animated');
+
+      item.addEventListener('animationend', function () {
+         list.removeChild(item);
+     });
+
+   });
+   // End function addItem.
 }
 // Register your function addItem for click event on button.
-btn.addEventListener('click', addItem);
+form.addEventListener('submit', addItem);
