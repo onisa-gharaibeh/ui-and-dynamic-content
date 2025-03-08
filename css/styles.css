@@ -1,4 +1,5 @@
 /* 
+Color Scheme: monochromatic
 Primary (Darkest - Text & Icons): #124734 (Deep Forest Green)
 Secondary (Headers & Buttons): #1B6A4E (Dark Jade Green)
 Accent (CTA & Highlights): #2E8B57 (Sea Green)
@@ -27,6 +28,7 @@ body {
     background-color: var(--bg);
     display: flex;
     height: 100vh;
+    font-size: 1rem;
 }
 
 h1,
@@ -141,6 +143,7 @@ form {
     padding-bottom: 1em;
     overflow: hidden;
 }
+
 .items li {
     border-bottom: solid .1em var(--acc);
     padding: .5em;
@@ -177,6 +180,7 @@ form {
         transform: translateX(30em);
     }
 }
+
 /* FEEDBACK */
 
 .errors {
